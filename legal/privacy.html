@@ -12,52 +12,67 @@
     <h1>Privacy Policy</h1>
   </header>
   <main>
-    <p class="muted">Last updated: 27 August 2026 · Operator: Schill Labs (Mike Schillereff)</p>
-    <p>This policy describes how BloomDoc (“the app”) handles information when you identify plants, save a collection, subscribe, or contact us. We do not sell your personal information.</p>
+    <p class="muted">Last updated: 28 August 2026 · Operator: Schill Labs (Mike Schillereff)</p>
+    <p>This policy describes how BloomDoc (“the app”) handles information when you identify plants, save a collection, subscribe, or contact us. We do not sell your personal information and we do not use it for cross-app advertising or tracking.</p>
+
+    <h2>Who we are</h2>
+    <p>BloomDoc is operated by Schill Labs (Mike Schillereff). Contact: <a href="mailto:mikeschillereff@hotmail.com">mikeschillereff@hotmail.com</a>. We process data in the United States.</p>
 
     <h2>Information we collect</h2>
     <div class="card">
       <ul>
-        <li><strong>Plant photos you choose to scan or save.</strong> Photos are uploaded so the app can identify species, estimate health, and keep a record in My Plants.</li>
-        <li><strong>Account data.</strong> The app creates an anonymous account so your plants and scans can be stored. If you add an email and password, we store that email so you can sign in on another device.</li>
-        <li><strong>Scan results, care plans, and chat with Leafy.</strong> These are stored with your account so you can reopen them later.</li>
-        <li><strong>Subscription status.</strong> Purchases are processed by Apple, Google, and RevenueCat. We receive entitlement status (for example, whether Premium is active), not your full payment card number.</li>
-        <li><strong>Usage counts.</strong> Daily and monthly free-tier scan and chat counts are checked on our backend so limits can be enforced.</li>
-        <li><strong>Product interaction events.</strong> Named events such as scan started, plant saved, paywall shown, and subscribe (no advertising identifier). Used to operate and improve the app, not to track you across other companies’ apps.</li>
+        <li><strong>Plant photos you choose to scan or save.</strong> A photo is sent to our backend so we can identify species, estimate health, and (if you save the plant) keep a record in My Plants.</li>
+        <li><strong>Account data.</strong> The app creates an anonymous account on first launch so scans can be stored. If you add an email and password, we store that email so you can sign in on another device.</li>
+        <li><strong>Scan results, care plans, plant names, and chat with Leafy.</strong> Stored with your account so you can reopen them.</li>
+        <li><strong>Subscription status (purchase history).</strong> Apple, Google, and RevenueCat process the payment. We receive whether Premium is active, the product identifier, and the period end — not your card number.</li>
+        <li><strong>Usage counts.</strong> Daily and monthly free-tier scan and chat counts are stored so limits can be enforced.</li>
+        <li><strong>Product interaction events.</strong> Named events such as scan started, plant saved, paywall shown, and subscribe. No advertising identifier. Not sold. Used to operate and improve the app.</li>
       </ul>
     </div>
 
     <h2>How we use plant photos and AI</h2>
-    <p>When you scan a plant, the photo is sent to our Supabase backend. A server-side edge function (<code>ai-proxy</code>) forwards the image and a prompt to OpenAI so we can return a species guess, health notes, and a care plan. Photos are used only to provide those features. We do not use your plant photos to train a public advertising profile.</p>
+    <p>When you scan, the photo is uploaded to our Supabase backend. A server-side function (<code>ai-proxy</code>) sends the image and a prompt to <strong>OpenAI’s API</strong> so we can return a species guess, health notes, a care plan, or a Leafy reply. We use the photo only to provide that feature.</p>
+    <p>OpenAI processes the request under its API terms. We do not use your plant photos to train a public advertising profile. We do not use the consumer ChatGPT product to run BloomDoc.</p>
+    <p>Saved plant photos are stored in a Supabase Storage bucket. The bucket is technically public, but files sit under a hard-to-guess URL that includes your account id and a random filename. Anyone who obtains that exact URL can open the image. Do not upload photos you are not comfortable storing that way. Scanning without tapping “Add to My Plants” does not keep the photo in Storage.</p>
 
     <h2>Processors</h2>
     <ul>
-      <li><strong>Supabase</strong> — authentication, Postgres database, file storage for plant photos, and the edge function that calls the AI provider.</li>
-      <li><strong>OpenAI</strong> — vision and text analysis requested by the edge function. The OpenAI API key stays on the server; it is not embedded in the app.</li>
+      <li><strong>Supabase</strong> (United States) — authentication, database, file storage, and the edge function that calls the AI provider.</li>
+      <li><strong>OpenAI</strong> (United States) — vision and text analysis requested by our edge function. The API key stays on the server.</li>
       <li><strong>RevenueCat</strong> — subscription status and restore-purchases for App Store / Google Play products.</li>
       <li><strong>Apple App Store / Google Play</strong> — billing for auto-renewable subscriptions.</li>
     </ul>
 
     <h2>Anonymous accounts</h2>
-    <p>If you skip email sign-in, BloomDoc still creates an anonymous account so scans can be saved on that device. Anonymous data is tied to that install. Adding an email lets you keep plants if you change phones.</p>
+    <p>If you skip email, BloomDoc still creates an anonymous account tied to that install. Adding an email converts the same account so plants stay with you. Signing in to a <em>different</em> existing email does not merge guest plants — the app warns you first.</p>
 
     <h2>Notifications</h2>
-    <p>Care reminders (watering and fertilizing) are scheduled as <strong>local notifications on your device</strong>. We do not send server push notifications for care tasks. You can disable reminders in Profile or in system settings.</p>
+    <p>Care reminders are <strong>local notifications on your device</strong>. We do not send server push or marketing notifications. You can disable reminders in Profile or in system settings.</p>
 
     <h2>Location</h2>
     <p>BloomDoc does not request or read your location.</p>
 
-    <h2>Data retention</h2>
-    <p>Account data, plant photos, scans, care schedules, and chat history are kept while your account exists so the app can show your collection. If you delete your account in the app, we delete associated rows and stored photos we control. Billing records may be retained by Apple, Google, or RevenueCat as required for tax and fraud prevention. Backups may persist for a short period before they rotate.</p>
+    <h2>Legal bases (EEA / UK)</h2>
+    <p>If you use the app from the EEA or UK, we process data as needed to provide the service you request (contract) and to keep the service secure and rate-limited (legitimate interests). You may request access, correction, deletion, or a copy of the data we hold, or object to processing that is not required to run the app, by emailing us. We do not currently appoint an EU Article 27 representative. Contact the email above.</p>
 
-    <h2>Account deletion</h2>
-    <p>In the app: <strong>Profile → Delete account</strong>. This permanently removes your plants, scans, care schedules, chat history, and the account we created. You can also email <a href="mailto:mikeschillereff@hotmail.com">mikeschillereff@hotmail.com</a> and we will help.</p>
+    <h2>Your choices</h2>
+    <ul>
+      <li><strong>Access / correction / export:</strong> email <a href="mailto:mikeschillereff@hotmail.com">mikeschillereff@hotmail.com</a> from the address on the account (or describe the install) and we will help.</li>
+      <li><strong>Deletion:</strong> Profile → Delete account, or email us. We delete plants, scans, care schedules, chat, photos we store, usage and analytics events we control, and the account. Store billing records may be kept by Apple, Google, or RevenueCat as required for tax and fraud prevention. Backups may persist for a short period before they rotate.</li>
+      <li><strong>Tracking / ads:</strong> we do not track you across other companies’ apps or sell your data. There is no “Do Not Sell” opt-out because we do not sell personal information.</li>
+    </ul>
 
     <h2>Children</h2>
-    <p>BloomDoc is not directed at children under 13. Do not create an account for a child under 13.</p>
+    <p>BloomDoc is a general-audience plant-care app. It is <strong>not directed at children under 13</strong> and is not in Apple’s Kids category. Do not create an account for a child under 13. We do not knowingly collect personal information from children under 13. If you believe we have, email us and we will delete it.</p>
+
+    <h2>Retention</h2>
+    <p>Account data, saved photos, scans, care schedules, chat, usage counts, and product events are kept while the account exists so the app can show your collection and enforce free-tier limits. After you delete the account we remove the records we control as described above.</p>
+
+    <h2>Changes</h2>
+    <p>We may update this policy. The date at the top will change. Material changes will be reflected here before they apply to new data we collect.</p>
 
     <h2>Contact</h2>
-    <p>Questions about this policy: <a href="mailto:mikeschillereff@hotmail.com">mikeschillereff@hotmail.com</a> · Schill Labs.</p>
+    <p><a href="mailto:mikeschillereff@hotmail.com">mikeschillereff@hotmail.com</a> · Schill Labs.</p>
 
     <footer>
       <nav class="legal">
