@@ -39,9 +39,9 @@ See `C:\Users\mikes\apple-ship\docs\ONE_TIME_APPLE_SETUP.md` — enroll once, on
 
 ## Legal URLs (after GitHub Pages is enabled)
 
-- Privacy: https://daschill.github.io/bloomdoc/legal/privacy.html
-- Terms: https://daschill.github.io/bloomdoc/legal/terms.html
-- Support: https://daschill.github.io/bloomdoc/legal/support.html
+- Privacy: https://getbloomdoc.com/legal/privacy.html
+- Terms: https://getbloomdoc.com/legal/terms.html
+- Support: https://getbloomdoc.com/legal/support.html
 
 Enable Pages: repo Settings → Pages → Deploy from branch `main` / folder `/docs`.
 
