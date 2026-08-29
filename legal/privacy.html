@@ -22,7 +22,8 @@
     <div class="card">
       <ul>
         <li><strong>Plant photos you choose to scan or save.</strong> A photo is sent to our backend so we can identify species, estimate health, and (if you save the plant) keep a record in My Plants.</li>
-        <li><strong>Account data.</strong> The app creates an anonymous account on first launch so scans can be stored. If you add an email and password, we store that email so you can sign in on another device.</li>
+        <li><strong>Account data.</strong> The app creates an anonymous account on first launch so scans can be stored. If you add an email and password, or use Sign in with Apple, we store that login so you can sign in on another device. Apple may provide a Hide My Email relay address instead of your real inbox.</li>
+        <li><strong>Name.</strong> Sign in with Apple may send your name the first time you authorize the app. We store it as a display name if you provide it.</li>
         <li><strong>Scan results, care plans, plant names, and chat with Leafy.</strong> Stored with your account so you can reopen them.</li>
         <li><strong>Subscription status (purchase history).</strong> Apple, Google, and RevenueCat process the payment. We receive whether Premium is active, the product identifier, and the period end — not your card number.</li>
         <li><strong>Usage counts.</strong> Daily and monthly free-tier scan and chat counts are stored so limits can be enforced.</li>
@@ -41,11 +42,12 @@
       <li><strong>Supabase</strong> (United States) — authentication, database, file storage, and the edge function that calls the AI provider.</li>
       <li><strong>OpenAI</strong> (United States) — vision and text analysis requested by our edge function. The API key stays on the server.</li>
       <li><strong>RevenueCat</strong> — subscription status and restore-purchases for App Store / Google Play products.</li>
-      <li><strong>Apple App Store / Google Play</strong> — billing for auto-renewable subscriptions.</li>
+      <li><strong>Apple</strong> — App Store billing and, if you use Sign in with Apple, identity (and optionally a private relay email).</li>
+      <li><strong>Google Play</strong> — billing if you subscribe on Android.</li>
     </ul>
 
     <h2>Anonymous accounts</h2>
-    <p>If you skip email, BloomDoc still creates an anonymous account tied to that install. Adding an email converts the same account so plants stay with you. Signing in to a <em>different</em> existing email does not merge guest plants — the app warns you first.</p>
+    <p>If you skip email, BloomDoc still creates an anonymous account tied to that install. Adding an email or Sign in with Apple converts the same account so plants stay with you. Signing in to a <em>different</em> existing account does not merge guest plants — the app warns you first.</p>
 
     <h2>Notifications</h2>
     <p>Care reminders are <strong>local notifications on your device</strong>. We do not send server push or marketing notifications. You can disable reminders in Profile or in system settings.</p>
