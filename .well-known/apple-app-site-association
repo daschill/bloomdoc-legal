@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["3H3PMHR6RY.com.schilllabs.bloomdoc"],
+        "components": [
+          {"/": "/gift/", "comment": "Only plant introductions. Exact capability validation and confirmation occur in the app."}
+        ]
+      }
+    ]
+  }
+}

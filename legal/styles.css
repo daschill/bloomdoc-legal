@@ -45,3 +45,53 @@ footer {
   font-size: 0.9rem;
 }
 nav.legal a { margin-right: 14px; }
+
+.hero { padding: 56px 20px; }
+.hero-inner {
+  max-width: 880px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 128px minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+}
+.hero-mark {
+  width: 128px;
+  height: 128px;
+  object-fit: contain;
+}
+.hero h1 {
+  margin: 4px 0 12px;
+  font-size: clamp(2.2rem, 7vw, 4rem);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+.hero-copy { max-width: 620px; margin: 0; color: #d7e6d8; font-size: 1.05rem; }
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--leaf);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+.hero .eyebrow { color: #d7e6d8; }
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 8px 0 28px;
+}
+.feature { margin: 0; }
+.feature > span { color: var(--leaf); font-size: 0.8rem; font-weight: 700; }
+.feature h2 { margin: 10px 0 8px; font-size: 1.15rem; line-height: 1.25; }
+.feature p { margin: 0; font-size: 0.94rem; }
+.safety-note { border-left: 5px solid var(--leaf); padding-left: 24px; }
+.safety-note h2 { margin: 0 0 8px; }
+.safety-note p:last-child { margin-bottom: 0; }
+
+@media (max-width: 640px) {
+  .hero { padding-top: 36px; }
+  .hero-inner { grid-template-columns: 76px minmax(0, 1fr); gap: 18px; }
+  .hero-mark { width: 76px; height: 76px; }
+  .feature-grid { grid-template-columns: 1fr; }
+}

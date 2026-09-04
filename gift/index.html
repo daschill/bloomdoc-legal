@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src https://yzbwuqwtlfrjngsuqswc.supabase.co; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="description" content="Preview a deliberately shared plant introduction. You choose whether to add a separate plant to your own BloomDoc garden.">
+  <!-- Generic shell only: private introductions never enter crawler metadata. -->
+  <title>A plant introduction · BloomDoc</title>
+  <link rel="stylesheet" href="../legal/styles.css">
+  <link rel="stylesheet" href="gift.css">
+  <script type="module" src="gift.js"></script>
+</head>
+<body>
+  <header><a href="/">BloomDoc</a><span>A thoughtful start for a new plant</span></header>
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <img src="bloomdoc-emblem.png" width="112" height="112" alt="Drawn green leaves, the BloomDoc emblem">
+      <div><p class="eyebrow">PLANT INTRODUCTION</p><h1 id="page-title">A little history.<br>A fresh beginning.</h1>
+      <p>Read what someone chose to share, then decide whether to welcome a separate plant into your own garden.</p></div>
+    </section>
+    <section class="card" aria-labelledby="preview-title">
+      <h2 id="preview-title">Your shared introduction</h2>
+      <p id="status" role="status" aria-live="polite">Open the original gift link, or paste it below to preview the introduction.</p>
+      <div id="introduction" hidden>
+        <h3 id="plant-name"></h3>
+        <dl><dt>Sender-supplied scientific name · unverified</dt><dd id="scientific-name"></dd>
+        <dt>Deliberately shared care note · unverified</dt><dd id="care-note"></dd>
+        <dt>Introduction created</dt><dd id="introduced-at"></dd>
+        <dt>Link expires</dt><dd id="expires-at"></dd></dl>
+        <p class="boundary">An introduction is not a diagnosis or a toxicity check. It does not establish that a plant is safe for people or pets.</p>
+      </div>
+      <label for="gift-link">Gift link</label>
+      <textarea id="gift-link" rows="3" maxlength="180" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="https://getbloomdoc.com/gift/#…" aria-describedby="link-privacy"></textarea>
+      <p id="link-privacy" class="muted">Keep this link private. Anyone who has it can view the shared introduction; the first eligible recipient can accept it.</p>
+      <div class="actions"><button id="preview" type="button">Preview introduction</button><button id="copy" type="button" class="secondary" disabled>Copy gift link</button></div>
+    </section>
+    <section class="card next" aria-labelledby="next-title">
+      <p class="eyebrow">WHEN YOU ARE READY</p><h2 id="next-title">Make it your own, in BloomDoc.</h2>
+      <p>Accepting needs a saved account and your confirmation. It creates your own plant; it does not share access to either person’s garden or copy private history.</p>
+      <a class="button" href="com.schilllabs.bloomdoc://gift/" id="open-app">Open BloomDoc</a>
+      <p class="muted">If the introduction does not open directly, copy the gift link above, open BloomDoc and tap <strong>Paste gift link</strong>. Nothing is added automatically.</p>
+      <details><summary>Don’t have BloomDoc installed?</summary><p>No verified public download destination is available on this page yet. Ask the sender how to get the current app, then return to this link or scan the QR again. Installing does not automatically recover a gift link.</p></details>
+    </section>
+    <noscript><p class="boundary">JavaScript is needed to retrieve this private introduction. You can still open BloomDoc and explicitly paste the original link there.</p></noscript>
+    <footer><p>Ending a link stops new access. It cannot remove a copy already accepted or a screenshot.</p><nav class="legal"><a href="../legal/privacy.html">Privacy</a><a href="../legal/support.html">Get help</a><a href="/">About BloomDoc</a></nav></footer>
+  </main>
+</body>
+</html>
