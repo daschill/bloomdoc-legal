@@ -1,4 +1,7 @@
 title: BloomDoc
+include:
+  - .well-known
+exclude:
+  - AI_CONTENT_REPORTING_RUNBOOK.md
+  - SHARED_CARE_MODERATION_RUNBOOK.md
 description: Plant identification and care by Schill Labs
-url: https://getbloomdoc.com
-
