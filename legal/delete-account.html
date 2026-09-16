@@ -4,7 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'none'; img-src 'self'; style-src 'self'; script-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src https://encsvkwnsuwjxwrqxcsr.supabase.co; img-src 'self'; style-src 'self'; script-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
   <title>Delete a BloomDoc account</title>
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -15,23 +16,33 @@
   </header>
   <main>
     <p>You can request removal of your BloomDoc account, plants, scans, care schedules, chat history and stored photos. Removing the app from your phone is not an account-deletion request.</p>
+    <p>If you still have access to BloomDoc, open <strong>Profile → Danger zone → Delete account</strong>. The app keeps a private status receipt on your phone. Keep that receipt until cloud deletion is confirmed complete.</p>
 
-    <section class="card" aria-labelledby="current-status">
-      <h2 id="current-status">Current service status</h2>
-      <p>Cloud account deletion and Guest User recovery-code submission are not currently available. We are resolving a photo-cleanup issue. We cannot confirm completed deletion while that issue remains unresolved.</p>
-      <p>You can contact support now to request help. A support request is not confirmation of completed deletion, and we cannot promise a completion date yet.</p>
+    <section class="card" aria-labelledby="guest-recovery-title">
+      <h2 id="guest-recovery-title">Lost access to a Guest User?</h2>
+      <p>If the original phone or app installation is gone, use the recovery code you previously saved from BloomDoc. It can only request deletion of the exact Guest User that created it; it cannot open the garden or sign you in.</p>
+      <p><strong>This permanently deletes that Guest User and its cloud data. Anyone with the code can request this deletion.</strong> Keep a separate copy until deletion is complete. Never email it, share it with support, or put it in a web address.</p>
+      <noscript><p>JavaScript is required to securely submit a recovery code. You can also request deletion from the original BloomDoc installation or contact support below.</p></noscript>
+      <form id="guest-deletion-form" autocomplete="off" method="post" hidden>
+        <fieldset id="deletion-fields" disabled>
+          <legend>Request permanent Guest User deletion</legend>
+          <label for="recovery-code">Recovery code</label>
+          <textarea id="recovery-code" rows="4" maxlength="110" required autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="BDR1:…" aria-describedby="recovery-code-help"></textarea>
+          <p id="recovery-code-help">Paste the complete code saved from BloomDoc. This page sends it directly to BloomDoc's deletion service and does not save it in browser storage.</p>
+          <p><label><input id="deletion-consent" type="checkbox" required> I understand this permanently deletes the Guest User and its cloud data, cannot be undone, and does not cancel a store subscription.</label></p>
+          <button id="request-deletion" type="submit">Request permanent deletion / check status</button>
+        </fieldset>
+      </form>
+      <p id="deletion-result" role="status" aria-live="polite" aria-atomic="true"></p>
+      <p class="muted">An accepted or pending request, an empty screen, or a network timeout is <strong>not completed deletion</strong>. To check again, paste your separately saved code and confirm again. This page never submits automatically. Do not assume photos were removed because the app stopped showing them.</p>
     </section>
 
-    <h2>Request help with a saved account</h2>
-    <p>If you saved your account with email or Sign in with Apple, <a href="mailto:mikeschillereff@hotmail.com?subject=BloomDoc%20account%20deletion%20request">email BloomDoc support with an account-deletion request</a>. Use the address associated with your BloomDoc account if you can. We must verify ownership before acting on an account; an email address alone is not proof.</p>
-    <p>Do not include your password, sign-in token, deletion receipt, recovery code or private plant photos.</p>
+    <h2>Saved accounts and support</h2>
+    <p>If you saved your account with email or Sign in with Apple, sign in to BloomDoc and delete it from Profile. If you cannot sign in, <a href="mailto:mikeschillereff@hotmail.com?subject=BloomDoc%20account%20deletion%20request">email BloomDoc support with an account-deletion request</a>. Use the address associated with your BloomDoc account if you can. We must verify ownership before acting on an account; an email address alone is not proof.</p>
+    <p>Do not include your password, sign-in token, deletion receipt, recovery code or private plant photos. A support message is not confirmation that deletion has completed.</p>
 
-    <h2>Guest Users and recovery codes</h2>
-    <p>If you still have the original installation, keep it while contacting support. If you saved a recovery code, keep it private for the future recovery service. This page does not collect codes. Do not email a recovery code to anyone: it can authorize permanent deletion.</p>
+    <h2>No recovery code?</h2>
     <p>A Guest User is tied to its original app account, not an email or display name. If the installation and recovery code are both gone, support cannot safely identify it from a device name or a plant description and will not guess which account to remove.</p>
-
-    <h2>Keep any pending receipt</h2>
-    <p>If your app has already accepted a deletion request, keep its status receipt. An accepted or pending request, an empty screen, and a network timeout are <strong>not completed deletion</strong>. Do not assume that photos were removed because the app stopped showing them.</p>
 
     <h2>Subscriptions are separate</h2>
     <p>Deleting a BloomDoc account or uninstalling the app does not cancel an Apple App Store or Google Play subscription. See <a href="support.html">Support</a> for subscription-management instructions.</p>
@@ -44,5 +55,6 @@
       </nav>
     </footer>
   </main>
+  <script type="module" src="delete-account.js"></script>
 </body>
 </html>

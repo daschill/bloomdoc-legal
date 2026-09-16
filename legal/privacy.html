@@ -12,8 +12,8 @@
     <h1>Privacy Policy</h1>
   </header>
   <main>
-    <p class="muted">Last updated: 4 September 2026 · Operator: Schill Labs (Mike Schillereff)</p>
-    <p>This policy describes how BloomDoc (“the app”) handles information when you identify plants, save a collection, subscribe, or contact us. We do not sell your personal information and we do not use it for cross-app advertising or tracking.</p>
+    <p class="muted">Last updated: 15 September 2026 · Operator: Schill Labs (Mike Schillereff)</p>
+    <p>This policy describes how BloomDoc (“the app”) handles information when you identify plants, save a collection, subscribe, view ads on the free plan, or contact us. We do not sell your personal information. We do not use BloomDoc account or plant data to track you across other companies’ apps.</p>
 
     <h2>Who we are</h2>
     <p>BloomDoc is operated by Schill Labs (Mike Schillereff). Contact: <a href="mailto:mikeschillereff@hotmail.com">mikeschillereff@hotmail.com</a>. We process data in the United States.</p>
@@ -27,7 +27,8 @@
         <li><strong>Scan results, care plans, plant names, and chat with Leafy.</strong> Stored with your account so you can reopen them. Care journal entries, progress reports, guided-project progress, room-checkup observations, and room and pot details you provide are also saved. When you ask Leafy about a saved plant, relevant recent history and notes are included in the AI request.</li>
         <li><strong>Subscription status (purchase history).</strong> Apple, Google, and RevenueCat process the payment. We receive whether Premium is active, the product identifier, and the period end — not your card number.</li>
         <li><strong>Usage counts.</strong> Daily and monthly free-tier scan, care-plan generation, and chat counts are stored so limits can be enforced.</li>
-        <li><strong>Product interaction events.</strong> Named events such as scan started, plant saved, paywall shown, and subscribe. No advertising identifier. Not sold. Used to operate and improve the app.</li>
+        <li><strong>Product interaction events.</strong> Named events such as scan started, plant saved, paywall shown, subscribe, and whether an ad slot was filled. No advertising identifier. Not sold. Used to operate and improve the app.</li>
+        <li><strong>Ads on the free plan.</strong> If you are not subscribed to Premium, BloomDoc shows a banner on the main tabs and occasional full-screen ads after you leave a successful scan result. Ads are served by Google AdMob. We request non-personalized ads and do not read the device advertising identifier. Premium removes these ads. AdMob may receive the information needed to fill an ad (app identity and a limited ad-environment request). Plant photos, chat, and care notes are not sent to AdMob.</li>
         <li><strong>Limited diagnostic events.</strong> If the app catches an error, it may store the affected app boundary and error type with the current account so we can diagnose reliability problems. It does not send the stack trace, photo, private plant note, chat text, password, or sign-in token in that event.</li>
         <li><strong>Scan guesses and optional corrections.</strong> We store the model’s species guess (and, if you tap Yes / Not this, your correction plus that photo) so we can measure accuracy and improve identification. This is not used for ads.</li>
         <li><strong>AI safety reports you choose to send.</strong> An in-app report includes its category, an optional note, a bounded excerpt of the selected scan result, care plan, or Leafy response, and a cryptographic hash of the complete response. It does not include the plant photo. We use reports to investigate unsafe, misleading, or inappropriate output.</li>
@@ -39,7 +40,7 @@
     <p>You may optionally provide symptom timing, affected growth, soil observations, and up to two extra views of the same plant. These are sent for that analysis. The app keeps your first photo when you save the plant; it does not add the extra views to your saved photo history. The observations are stored with the saved analysis. If a photo appears to contain multiple plants, BloomDoc may ask you to retake a single-plant view rather than assigning one result to every plant. Weekly garden reviews summarize recorded care and upcoming reminders without sending a new AI request.</p>
     <p>OpenAI processes the request under its API terms. We do not use your plant photos to train a public advertising profile. We do not use the consumer ChatGPT product to run BloomDoc.</p>
     <p>Each displayed AI scan result, care plan, and Leafy response includes an in-app reporting action. Sending a report is optional. Reports go to BloomDoc's private safety-review queue and are linked to the reporting account so we can prevent abuse, investigate the selected output, and remove the report when that account is deleted. Reports are not sent through email or posted publicly.</p>
-    <p>Saved plant photos are stored in a private Supabase Storage bucket with account-based access controls. The app creates time-limited signed links to display photos; anyone who obtains a valid signed link can view that image until the link expires. Avoid including people, documents, or other sensitive information in plant photos. Scanning without saving a plant does not normally keep the photo in Storage, but an optional species correction may store its photo as described above.</p>
+    <p>Saved plant photos use private Cloudflare R2 storage behind BloomDoc's authenticated photo service. Supabase manages the account, photo references, access checks, and deletion status; older photo records may also require cleanup from private Supabase Storage. The app can create time-limited signed links to display photos. Anyone who obtains a valid signed link may view that image while the link and the account's access remain valid. Account deletion also revokes access through BloomDoc's photo service. Avoid including people, documents, or other sensitive information in plant photos. Scanning without saving a plant does not normally keep the photo in our photo storage, but an optional species correction may store its photo as described above.</p>
     <p>Growth cards and progress movies are generated on your device from the photos you select. They are not posted publicly by BloomDoc. If you choose to share, the image or movie and accompanying text are passed to the destination you select in the device share sheet. That destination's privacy practices apply. Shared media includes the chosen plant name and photo dates, but not private journal notes or room details.</p>
 
     <h2>Care rounds, projects, and room checkups</h2>
@@ -52,17 +53,23 @@
     <h2>Plant gifts</h2>
     <p>Plant gifting is not available in the current public release. This version does not publish gift notes or expose plant introductions through public gift links. Old test links cannot be previewed or accepted.</p>
 
+    <h2>Referrals</h2>
+    <p>Optional invite codes let a saved-account user share BloomDoc. We store the referrer’s code, which friend’s account claimed it, and whether a promotional Premium reward was granted after that friend made a paid Premium purchase (free trials do not count). Codes and reward records are removed when the related accounts are deleted. RevenueCat grants and records the promotional entitlement.</p>
+
     <h2>Processors</h2>
     <ul>
       <li><strong>Supabase</strong> (United States) — authentication, database, file storage, and the edge function that calls the AI provider.</li>
+      <li><strong>Cloudflare</strong> — private plant-photo storage in R2 and the backend service that stores, retrieves, and deletes those photo objects. Photos are not published in a public bucket.</li>
       <li><strong>OpenAI</strong> (United States) — vision and text analysis requested by our edge function. The API key stays on the server.</li>
       <li><strong>RevenueCat</strong> — subscription status and restore-purchases for App Store / Google Play products.</li>
       <li><strong>Apple</strong> — App Store billing and, if you use Sign in with Apple, identity (and optionally a private relay email).</li>
       <li><strong>Google Play</strong> — billing if you subscribe on Android.</li>
+      <li><strong>Google AdMob</strong> — serves ads to free-plan users. See Google’s advertising privacy documentation. Premium users are not shown these ads.</li>
     </ul>
 
     <h2>Guest accounts</h2>
     <p>If you skip email, BloomDoc still creates a guest account tied to that install. Adding an email or Sign in with Apple converts the same account so plants stay with you. Signing in to a <em>different</em> existing account does not merge guest plants — the app warns you first.</p>
+    <p>While signed in as a Guest User, you may create a lost-phone deletion recovery code. The app generates an opaque identifier and independent random secret and shows the complete code only on your phone. Our private backend stores a hash of the secret with the account ID, registration and bounded-attempt state; it does not store the plaintext code, email, name, or device identifier. Replacing the code disables the old one, and saving the Guest User as an email or social account revokes an unused code. The public deletion form sends the identifier and secret only in a no-cache POST body and uses them solely to enqueue or check that account's durable deletion request.</p>
 
     <h2>Notifications</h2>
     <p>Care, project, and room-checkup reminders are <strong>local notifications on your device</strong>. Each optional reminder family has its own in-app choice, and all can also be disabled in system settings. We do not send server push or marketing notifications. A room-checkup notification contains a neutral prompt and routing identifiers, not plant names or private room notes.</p>
@@ -76,8 +83,8 @@
     <h2>Your choices</h2>
     <ul>
       <li><strong>Access / correction / export:</strong> email <a href="mailto:mikeschillereff@hotmail.com">mikeschillereff@hotmail.com</a> from the address on the account (or describe the install) and we will help.</li>
-      <li><strong>Deletion:</strong> Request it from Profile → Delete account, or email us. The request covers plants, scans, care schedules, chat, photos we store, AI safety reports, usage and analytics events we control, and the account. A request is not completed deletion: cloud cleanup, account removal, and this phone's cleanup may finish separately. Keep the receipt and contact support if cleanup remains pending. Copies you already shared to another app cannot be recalled. Deleting your account does not cancel a store subscription. Store billing records may be kept by Apple, Google, or RevenueCat as required for tax and fraud prevention. Backups may persist for a short period before they rotate.</li>
-      <li><strong>Tracking / ads:</strong> we do not track you across other companies’ apps or sell your data. There is no “Do Not Sell” opt-out because we do not sell personal information.</li>
+      <li><strong>Deletion:</strong> Request it from Profile → Delete account. A Guest User who saved a lost-phone recovery code can instead use the <a href="delete-account.html">account-deletion page</a> after losing the install; a saved account holder can email us from the account address. The request covers plants, scans, care schedules, chat, photos we store, AI safety reports, usage and analytics events we control, and the account. A request is not completed deletion: cloud cleanup, account removal, and this phone's cleanup may finish separately. Keep the receipt or recovery code and contact support if cleanup remains pending. Copies you already shared to another app cannot be recalled. Deleting your account does not cancel a store subscription. Store billing records may be kept by Apple, Google, or RevenueCat as required for tax and fraud prevention. Backups may persist for a short period before they rotate.</li>
+      <li><strong>Tracking / ads:</strong> we do not sell your data and we do not use an advertising identifier to track you across other apps. The free plan shows AdMob ads; subscribe to Premium to remove them. In the EEA, UK, and Switzerland, Google’s consent form may appear before ads are requested. There is no “Do Not Sell” opt-out because we do not sell personal information.</li>
     </ul>
 
     <h2>Children</h2>
